@@ -34,7 +34,10 @@ namespace MG_TopDownShooter
             Globals.content = this.Content;
             Globals.sprite_batch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content herea
+            // TODO: use this.Content to load your game content here
+            
+            Globals.keyboard = new HvKeyboard();
+            
             world = new World();
         }
 
@@ -45,8 +48,12 @@ namespace MG_TopDownShooter
 
             // TODO: Add your update logic here
 
+            Globals.keyboard.Update();
+
             world.Update();
 
+
+            Globals.keyboard.UpdateOld();
             base.Update(gameTime);
         }
 

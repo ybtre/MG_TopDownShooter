@@ -18,11 +18,21 @@ using Microsoft.Xna.Framework.Media;
 
 namespace MG_TopDownShooter
 {
-    public class Globals
+    public class Hero : Basic2d
     {
-        public static ContentManager content;
-        public static SpriteBatch sprite_batch;
+        public Hero(string PATH, Vector2 POS, Vector2 DIMS) : base(PATH, POS, DIMS)
+        {
 
-        public static HvKeyboard keyboard;
+        }
+
+        public override Update()
+        {
+            base.Update();
+        }
+
+        public override Draw()
+        {
+            base.Draw();
+        }
     }
 }
