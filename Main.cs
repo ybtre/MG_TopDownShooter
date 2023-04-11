@@ -80,7 +80,7 @@ namespace MG_TopDownShooter
 
             world.Draw(Vector2.Zero);
             
-            cursor.Draw(new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y), new Vector2(cursor.dims.X, cursor.dims.Y));
+            cursor.Draw(Globals.mouse.newMousePos);
             Globals.sprite_batch.End();
 
 
