@@ -14,12 +14,18 @@ namespace MG_TopDownShooter
 
         World world;
 
+        Basic2d cursor;
+
 
         public Main()
         {
             _graphics = new GraphicsDeviceManager(this);
+            _graphics.PreferredBackBufferWidth = Globals.screen_width;
+            _graphics.PreferredBackBufferHeight = Globals.screen_height;
+            _graphics.ApplyChanges();
+
             Content.RootDirectory = "Content";
-            IsMouseVisible = true;
+            IsMouseVisible = false;
         }
 
         protected override void Initialize()
@@ -35,8 +41,11 @@ namespace MG_TopDownShooter
             Globals.sprite_batch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            
+
             Globals.keyboard = new HvKeyboard();
+            Globals.mouse = new HvMouseControl();
+
+            cursor = new Basic2d("2D\\MISC\\crosshair038", Vector2.Zero, new Vector2(64, 64));
             
             world = new World();
         }
@@ -49,10 +58,13 @@ namespace MG_TopDownShooter
             // TODO: Add your update logic here
 
             Globals.keyboard.Update();
+            Globals.mouse.Update();
+
 
             world.Update();
 
 
+            Globals.keyboard.UpdateOld();
             Globals.keyboard.UpdateOld();
             base.Update(gameTime);
         }
@@ -66,9 +78,9 @@ namespace MG_TopDownShooter
             Globals.sprite_batch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
             // DRAW hERE
 
-            world.Draw();
-
-
+            world.Draw(Vector2.Zero);
+            
+            cursor.Draw(new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y), new Vector2(cursor.dims.X, cursor.dims.Y));
             Globals.sprite_batch.End();
 
 

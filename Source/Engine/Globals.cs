@@ -1,18 +1,10 @@
 #region Includes
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
 
 #endregion
 
@@ -20,9 +12,40 @@ namespace MG_TopDownShooter
 {
     public class Globals
     {
+        public static int screen_height = 720;
+        public static int screen_width = 1280;
+
         public static ContentManager content;
         public static SpriteBatch sprite_batch;
 
         public static HvKeyboard keyboard;
+        public static HvMouseControl mouse;
+
+        public static float GetDistance(Vector2 pos, Vector2 target)
+        {
+            return (float)Math.Sqrt(Math.Pow(pos.X - target.X, 2) + Math.Pow(pos.Y - target.Y, 2));
+        }
+
+        public static float RotateTowards(Vector2 position, Vector2 target)
+        {
+            if(target.X == position.X && target.Y == position.Y)
+            {
+                return 0;
+            }
+
+            var direction = Vector2.Normalize(target - position);
+            var angle = (float)Math.Acos(Vector2.Dot(direction, Vector2.UnitY));
+
+            if(direction.X < 0)
+            {
+                return (float)Math.PI + angle;
+            }
+            else
+            {
+                return (float)Math.PI - angle;
+            }
+            
+        }
+
     }
 }

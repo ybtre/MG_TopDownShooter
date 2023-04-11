@@ -23,6 +23,8 @@ namespace MG_TopDownShooter
 
         public Vector2 pos, dims;
 
+        public float rot;
+
         public Texture2D sprite;
     
         public Basic2d(string PATH, Vector2 POS, Vector2 DIMS)
@@ -38,17 +40,32 @@ namespace MG_TopDownShooter
 
         }
 
-        public virtual void Draw()
+        public virtual void Draw(Vector2 OFFSET)
         {
             if(sprite != null)
             {
                 Globals.sprite_batch.Draw(
                         texture: sprite,
-                        destinationRectangle: new Rectangle((int)(pos.X), (int)(pos.Y), (int)dims.X, (int)dims.Y),
+                        destinationRectangle: new Rectangle((int)(pos.X + OFFSET.X), (int)(pos.Y + OFFSET.Y), (int)dims.X, (int)dims.Y),
                         sourceRectangle: null,
                         color: Color.White,
-                        rotation: .0f,
+                        rotation: rot,
                         origin: new Vector2(sprite.Bounds.Width/2, sprite.Bounds.Height/2),
+                        effects: new SpriteEffects(),
+                        layerDepth: 0);
+            }
+        }
+        public virtual void Draw(Vector2 OFFSET, Vector2 ORIGIN)
+        {
+            if(sprite != null)
+            {
+                Globals.sprite_batch.Draw(
+                        texture: sprite,
+                        destinationRectangle: new Rectangle((int)(pos.X + OFFSET.X), (int)(pos.Y + OFFSET.Y), (int)dims.X, (int)dims.Y),
+                        sourceRectangle: null,
+                        color: Color.White,
+                        rotation: rot,
+                        origin: new Vector2(ORIGIN.X, ORIGIN.Y),
                         effects: new SpriteEffects(),
                         layerDepth: 0);
             }

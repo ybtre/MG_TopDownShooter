@@ -20,12 +20,12 @@ namespace MG_TopDownShooter
 {
     public class World
     {
-        public Basic2d hero;
+        public Hero hero;
            
 
         public World()
         {
-            hero = new Basic2d("2D\\Characters\\green_character", new Vector2(300, 300), new Vector2(64, 64)); 
+            hero = new Hero("2D\\Characters\\green_character", new Vector2(300, 300), new Vector2(64, 64)); 
         }
 
         public virtual void Update()
@@ -33,9 +33,9 @@ namespace MG_TopDownShooter
             hero.Update();
         }
 
-        public virtual void Draw()
+        public virtual void Draw(Vector2 OFFSET)
         {
-            hero.Draw();
+            hero.Draw(OFFSET);
         }
     }
 }
