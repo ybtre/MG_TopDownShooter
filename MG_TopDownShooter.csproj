@@ -13,38 +13,25 @@
   <ItemGroup>
     <None Remove="Content\bin\DesktopGL\2D\Characters\green_character.xnb" />
     <None Remove="Content\bin\DesktopGL\2D\Characters\green_hand.xnb" />
+    <None Remove="Content\bin\DesktopGL\2D\Characters\player_ship.xnb" />
     <None Remove="Content\bin\DesktopGL\2D\Characters\purple_character.xnb" />
     <None Remove="Content\bin\DesktopGL\2D\Characters\purple_hand.xnb" />
     <None Remove="Content\bin\DesktopGL\2D\Characters\red_character.xnb" />
     <None Remove="Content\bin\DesktopGL\2D\Characters\red_hand.xnb" />
     <None Remove="Content\bin\DesktopGL\2D\Characters\yellow_character.xnb" />
-    <None Remove="Content\bin\DesktopGL\2D\Characters\yellow_hand.xnb" />
+    <None Remove="Content\bin\DesktopGL\2D\Misc\crosshair038.xnb" />
+    <None Remove="Content\bin\DesktopGL\2D\Projectiles\missile_projectile.xnb" />
     <None Remove="Icon.ico" />
     <None Remove="Icon.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bin\DesktopGL\2D\Characters\green_character.xnb">
+    <Content Include="Content\bin\DesktopGL\2D\Characters\player_ship.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\bin\DesktopGL\2D\Characters\green_hand.xnb">
+    <Content Include="Content\bin\DesktopGL\2D\Misc\crosshair038.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\bin\DesktopGL\2D\Characters\purple_character.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\bin\DesktopGL\2D\Characters\purple_hand.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\bin\DesktopGL\2D\Characters\red_character.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\bin\DesktopGL\2D\Characters\red_hand.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\bin\DesktopGL\2D\Characters\yellow_character.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\bin\DesktopGL\2D\Characters\yellow_hand.xnb">
+    <Content Include="Content\bin\DesktopGL\2D\Projectiles\missile_projectile.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -55,6 +42,10 @@
   <ItemGroup>
     <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.1.303" />
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content\2D\Misc\" />
+    <Folder Include="Content\2D\Projectiles\" />
   </ItemGroup>
   <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
     <Message Text="Restoring dotnet tools" Importance="High" />

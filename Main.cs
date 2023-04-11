@@ -56,7 +56,7 @@ namespace MG_TopDownShooter
                 Exit();
 
             // TODO: Add your update logic here
-
+            Globals.delta_time = gameTime;
             Globals.keyboard.Update();
             Globals.mouse.Update();
 
@@ -65,13 +65,13 @@ namespace MG_TopDownShooter
 
 
             Globals.keyboard.UpdateOld();
-            Globals.keyboard.UpdateOld();
+            Globals.mouse.UpdateOld();
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Snow);
 
             // TODO: Add your drawing code here
 

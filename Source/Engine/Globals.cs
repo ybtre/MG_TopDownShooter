@@ -10,16 +10,21 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MG_TopDownShooter
 {
+    public delegate void PassObject(object obj);
+    public delegate object PassObjAndReturn(object obj);
+    
     public class Globals
     {
-        public static int screen_height = 720;
-        public static int screen_width = 1280;
+        public static int screen_width = 1920;
+        public static int screen_height = 1080;
 
         public static ContentManager content;
         public static SpriteBatch sprite_batch;
 
         public static HvKeyboard keyboard;
         public static HvMouseControl mouse;
+
+        public static GameTime delta_time;
 
         public static float GetDistance(Vector2 pos, Vector2 target)
         {

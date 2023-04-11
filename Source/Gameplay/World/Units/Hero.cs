@@ -18,14 +18,12 @@ using Microsoft.Xna.Framework.Media;
 
 namespace MG_TopDownShooter
 {
-    public class Hero : Basic2d
+    public class Hero : Unit
     {
-        public float speed;
-
 
         public Hero(string PATH, Vector2 POS, Vector2 DIMS) : base(PATH, POS, DIMS)
         {
-            speed = 2.0f;
+            speed = 3.0f;
         }
 
         public override void Update()
@@ -51,6 +49,11 @@ namespace MG_TopDownShooter
             }
 
             rot = Globals.RotateTowards(pos, new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y));
+
+            if(Globals.mouse.LeftClick())
+            {
+                GameGlobals.PassProjectile(new Missile(pos, this, Globals.mouse.newMousePos));
+            }
 
             base.Update();
         }
