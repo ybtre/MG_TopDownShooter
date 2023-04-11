@@ -71,7 +71,7 @@ namespace MG_TopDownShooter
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Snow);
+            GraphicsDevice.Clear(Color.LightBlue);
 
             // TODO: Add your drawing code here
 
