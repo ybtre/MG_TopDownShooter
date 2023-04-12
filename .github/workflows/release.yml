@@ -7,7 +7,7 @@ on:
 
 env:
   ITCH_USER_NAME: devpilgrim
-  ITCH_GAME_NAME: mg_topdownshooter
+  ITCH_GAME_NAME: mg-topdownshooter
   PROJECT_PATH: ~
 
 jobs:
