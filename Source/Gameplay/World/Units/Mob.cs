@@ -37,6 +37,12 @@ namespace MG_TopDownShooter
         {
             pos += Globals.RadialMovement(HERO.pos, pos, speed);
             rot = Globals.RotateTowards(pos, HERO.pos);
+
+            if(Globals.GetDistance(pos, HERO.pos) < 32.0f)
+            {
+                HERO.GetHit(1);
+                is_alive = false;
+            }
         }
 
         public override void Draw(Vector2 OFFSET)

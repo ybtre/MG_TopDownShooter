@@ -22,6 +22,8 @@ namespace MG_TopDownShooter
     {
         public bool is_alive;
 
+        public float health, health_max;
+
         public float speed;
 
         public float hit_dist;
@@ -30,6 +32,10 @@ namespace MG_TopDownShooter
         public Unit(string PATH, Vector2 POS, Vector2 DIMS) : base(PATH, POS, DIMS)
         {
             is_alive = true;
+
+            health = 1;
+
+            health_max = health;
 
             speed = 2.0f;
 
@@ -46,9 +52,14 @@ namespace MG_TopDownShooter
             base.Draw(OFFSET);
         }
 
-        public virtual void GetHit()
+        public virtual void GetHit(float DAMAGE)
         {
-            is_alive = false;
+            health -= DAMAGE;
+
+            if(health <= 0)
+            {
+                is_alive = false;
+            }
         }
     }
 }

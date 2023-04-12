@@ -23,6 +23,9 @@ namespace MG_TopDownShooter
 
         public Hero(string PATH, Vector2 POS, Vector2 DIMS) : base(PATH, POS, DIMS)
         {
+            health = 5;
+            health_max = health;
+
             speed = 3.0f;
         }
 

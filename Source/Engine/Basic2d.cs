@@ -65,7 +65,7 @@ namespace MG_TopDownShooter
             }
         }
 
-        public virtual void Draw(Vector2 OFFSET, Vector2 ORIGIN)
+        public virtual void Draw(Vector2 OFFSET, Vector2 ORIGIN, Color TINT)
         {
             if(sprite != null)
             {
@@ -76,7 +76,7 @@ namespace MG_TopDownShooter
                         texture: sprite,
                         destinationRectangle: dest_rect,
                         sourceRectangle: null,
-                        color: Color.White,
+                        color: TINT,
                         rotation: rot,
                         origin: origin,
                         effects: new SpriteEffects(),

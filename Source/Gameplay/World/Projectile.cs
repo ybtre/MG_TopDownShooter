@@ -71,7 +71,7 @@ namespace MG_TopDownShooter
             {
                 if (Globals.GetDistance(pos, UNITS[i].pos) < UNITS[i].hit_dist)
                 {
-                    UNITS[i].GetHit();
+                    UNITS[i].GetHit(1);
                     // we have a hit
                     return true;
                 }

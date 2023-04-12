@@ -22,14 +22,18 @@ namespace MG_TopDownShooter
     {   
         public SpriteFont font;
 
+        public QuantityDisplayBar health_bar;
+
         public UI()
         {
             font = Globals.content.Load<SpriteFont>("Fonts\\Arial24");
+
+            health_bar = new QuantityDisplayBar(new Vector2(204, 36), 2, Color.Red);
         }
 
         public void Update(World WORLD)
         {
-
+            health_bar.Update(WORLD.hero.health, WORLD.hero.health_max);
         }
 
         public void Draw(World WORLD)
@@ -38,6 +42,8 @@ namespace MG_TopDownShooter
             Vector2 str_dims = font.MeasureString(temp_str);
 
             Globals.sprite_batch.DrawString(font, temp_str, new Vector2(Globals.screen_width/2 - str_dims.X/2, Globals.screen_height - 100), Color.Black);
+
+            health_bar.Draw(new Vector2(20, Globals.screen_height - 60));
         }
 
     }
