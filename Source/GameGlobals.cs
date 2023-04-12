@@ -20,7 +20,9 @@ namespace MG_TopDownShooter
 {
     public class GameGlobals
     {
-        public static PassObject PassProjectile;
-        public static PassObject PassMob;
+        public static PassObject OnPassProjectile;
+        public static PassObject OnPassMob;
+
+        public static PassObject OnCheckScroll;
     }
 }

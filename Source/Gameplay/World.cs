@@ -36,10 +36,11 @@ namespace MG_TopDownShooter
         {
             num_killed = 0;
 
-            hero = new Hero("2D\\Characters\\player_ship", new Vector2(300, 300), new Vector2(64, 64));
+            hero = new Hero("2D\\Characters\\player_ship", new Vector2(Globals.screen_width / 2, Globals.screen_height / 2), new Vector2(64, 64));
 
-            GameGlobals.PassProjectile = AddProjectile;
-            GameGlobals.PassMob = AddMob;
+            GameGlobals.OnPassProjectile = AddProjectile;
+            GameGlobals.OnPassMob = AddMob;
+            GameGlobals.OnCheckScroll = CheckScroll;
 
             spawn_points.Add(new SpawnPoint("2D\\MISC\\spawn_grunts", new Vector2(100, Globals.screen_height - 100), new Vector2(32, 32)));
 
@@ -89,7 +90,7 @@ namespace MG_TopDownShooter
 
         public virtual void Draw(Vector2 OFFSET)
         {
-            hero.Draw(OFFSET);
+            hero.Draw(offset);
             
             for(int i = 0; i < spawn_points.Count; i++)
             {
@@ -117,6 +118,30 @@ namespace MG_TopDownShooter
         public virtual void AddProjectile(object INFO)
         {
             projectiles.Add((Projectile)INFO);
+        }
+
+        public virtual void CheckScroll(object INFO)
+        {
+            Vector2 temp_pos = (Vector2)INFO;
+
+            if(temp_pos.X < -offset.X + (Globals.screen_width * .4f))
+            {
+                offset = new Vector2(offset.X + hero.speed *1, offset.Y);
+            }
+            if(temp_pos.X > -offset.X + (Globals.screen_width * .6f))
+            {
+                offset = new Vector2(offset.X - hero.speed *1, offset.Y);
+            }
+
+            if(temp_pos.Y < -offset.Y + (Globals.screen_height * .4f))
+            {
+                offset = new Vector2(offset.X, offset.Y + hero.speed * 1);
+            }
+            if(temp_pos.Y > -offset.Y + (Globals.screen_height * .6f))
+            {
+                offset = new Vector2(offset.X, offset.Y - hero.speed * 1);
+            }
+
         }
     }
 }

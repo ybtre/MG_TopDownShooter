@@ -28,31 +28,42 @@ namespace MG_TopDownShooter
 
         public override void Update(Vector2 OFFSET)
         {
+            bool check_scroll = false;
+
             if(Globals.keyboard.GetPress("A"))
             {
                 pos = new Vector2(pos.X - speed,  pos.Y);
+                check_scroll = true;
             } 
             
             if(Globals.keyboard.GetPress("D"))
             {
                 pos = new Vector2(pos.X + speed, pos.Y);
+                check_scroll = true;
             }
             
             if(Globals.keyboard.GetPress("W"))
             {
                 pos = new Vector2(pos.X, pos.Y - speed);
+                check_scroll = true;
             }
             
             if(Globals.keyboard.GetPress("S"))
             {
                 pos = new Vector2(pos.X, pos.Y + speed);
+                check_scroll = true;
             }
 
-            rot = Globals.RotateTowards(pos, new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y));
+            rot = Globals.RotateTowards(pos, new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y) - OFFSET);
 
             if(Globals.mouse.LeftClick())
             {
-                GameGlobals.PassProjectile(new Missile(pos, this, Globals.mouse.newMousePos));
+                GameGlobals.OnPassProjectile(new Missile(pos, this, Globals.mouse.newMousePos - OFFSET));
+            }
+
+            if(check_scroll)
+            {
+                GameGlobals.OnCheckScroll(pos);
             }
 
             base.Update(OFFSET);

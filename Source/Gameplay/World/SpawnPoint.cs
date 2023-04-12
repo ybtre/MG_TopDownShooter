@@ -58,7 +58,7 @@ namespace MG_TopDownShooter
 
         public virtual void SpawnMob()
         {
-            GameGlobals.PassMob(new Grunt(pos));
+            GameGlobals.OnPassMob(new Grunt(pos));
         }
     }
 }
