@@ -26,7 +26,7 @@ namespace MG_TopDownShooter
             speed = 3.0f;
         }
 
-        public override void Update()
+        public override void Update(Vector2 OFFSET)
         {
             if(Globals.keyboard.GetPress("A"))
             {
@@ -55,7 +55,7 @@ namespace MG_TopDownShooter
                 GameGlobals.PassProjectile(new Missile(pos, this, Globals.mouse.newMousePos));
             }
 
-            base.Update();
+            base.Update(OFFSET);
         }
 
         public override void Draw(Vector2 OFFSET)

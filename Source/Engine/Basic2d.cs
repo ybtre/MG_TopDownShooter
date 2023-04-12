@@ -42,7 +42,7 @@ namespace MG_TopDownShooter
             origin = new Vector2(sprite.Bounds.Width/2, sprite.Bounds.Height/2);
         }
 
-        public virtual void Update()
+        public virtual void Update(Vector2 OFFSET)
         {
 
         }

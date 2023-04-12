@@ -37,6 +37,18 @@
 /processorParam:TextureFormat=Color
 /build:2D/Misc/crosshair038.png
 
+#begin 2D/Misc/spawn_grunts.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:2D/Misc/spawn_grunts.png
+
 #begin 2D/Projectiles/tile_0012.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -48,4 +60,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:2D/Projectiles/tile_0012.png;2D/Projectiles/missile_projectile.png
+
+#begin 2D/Units/Mobs/mob_grunt.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:2D/Units/Mobs/mob_grunt.png
 

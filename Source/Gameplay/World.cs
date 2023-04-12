@@ -25,21 +25,32 @@ namespace MG_TopDownShooter
         public Hero hero;
            
         public List<Projectile> projectiles = new List<Projectile>();
+        public List<Mob> mobs = new List<Mob>();
+        public List<SpawnPoint> spawn_points = new List<SpawnPoint>();
 
         public World()
         {
             hero = new Hero("2D\\Characters\\player_ship", new Vector2(300, 300), new Vector2(64, 64));
 
             GameGlobals.PassProjectile = AddProjectile;
+            GameGlobals.PassMob = AddMob;
+
+            spawn_points.Add(new SpawnPoint("2D\\MISC\\spawn_grunts", new Vector2(100, Globals.screen_height - 100), new Vector2(32, 32)));
+
+            spawn_points.Add(new SpawnPoint("2D\\MISC\\spawn_grunts", new Vector2(Globals.screen_width/2, 50), new Vector2(32, 32)));
+            spawn_points[spawn_points.Count-1].spawn_timer.AddToTimer(500);
+
+            spawn_points.Add(new SpawnPoint("2D\\MISC\\spawn_grunts", new Vector2(Globals.screen_width - 100, Globals.screen_height / 2), new Vector2(32, 32)));
+            spawn_points[spawn_points.Count-1].spawn_timer.AddToTimer(1000);
         }
 
         public virtual void Update()
         {
-            hero.Update();
+            hero.Update(offset);
 
             for(int i = 0; i < projectiles.Count; i++)
             {
-                projectiles[i].Update(offset, null);
+                projectiles[i].Update(offset, mobs.ToList<Unit>());
 
                 if(!projectiles[i].is_alive)
                 {
@@ -47,17 +58,49 @@ namespace MG_TopDownShooter
                     i--;
                 }
             }
+
+            for(int i = 0; i < mobs.Count; i++)
+            {
+                mobs[i].Update(offset, hero);
+
+                if(!mobs[i].is_alive)
+                {
+                    mobs.RemoveAt(i);
+                    i--;
+                }
+            }
+
+            for(int i = 0; i < spawn_points.Count; i++)
+            {
+                spawn_points[i].Update(offset);
+            }
+
         }
 
         public virtual void Draw(Vector2 OFFSET)
         {
             hero.Draw(OFFSET);
+            
+            for(int i = 0; i < spawn_points.Count; i++)
+            {
+                spawn_points[i].Draw(offset);
+            }
+
+            for(int i = 0; i < mobs.Count; i++)
+            {
+                mobs[i].Draw(offset);
+            }
 
             for(int i = 0; i < projectiles.Count; i++)
             {
                 projectiles[i].Draw(offset);
             }
 
+        }
+
+        public virtual void AddMob(object INFO)
+        {
+            mobs.Add((Mob)INFO);
         }
 
         public virtual void AddProjectile(object INFO)

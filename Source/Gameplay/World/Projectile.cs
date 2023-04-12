@@ -60,13 +60,23 @@ namespace MG_TopDownShooter
             }
 
             if (HitSomething(UNITS))
-                {
-                    is_alive = false;
-                }
+            {
+                is_alive = false;
             }
+        }
 
         public virtual bool HitSomething(List<Unit> UNITS)
         {
+            for (int i = 0; i < UNITS.Count; i++)
+            {
+                if (Globals.GetDistance(pos, UNITS[i].pos) < UNITS[i].hit_dist)
+                {
+                    UNITS[i].GetHit();
+                    // we have a hit
+                    return true;
+                }
+            }
+
             return false;
         }
 
@@ -74,6 +84,5 @@ namespace MG_TopDownShooter
         {
             base.Draw(OFFSET);
         }
-
     }
 }

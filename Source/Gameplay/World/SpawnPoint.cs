@@ -18,26 +18,31 @@ using Microsoft.Xna.Framework.Media;
 
 namespace MG_TopDownShooter
 {
-    public class Unit : Basic2d
+    public class SpawnPoint : Basic2d
     {
         public bool is_alive;
 
-        public float speed;
-
         public float hit_dist;
+    
+        public HvTimer spawn_timer = new HvTimer(2200);
 
-
-        public Unit(string PATH, Vector2 POS, Vector2 DIMS) : base(PATH, POS, DIMS)
+        public SpawnPoint(string PATH, Vector2 POS, Vector2 DIMS) : base(PATH, POS, DIMS)
         {
             is_alive = true;
-
-            speed = 2.0f;
 
             hit_dist = 35.0f;
         }
 
         public override void Update(Vector2 OFFSET)
         {
+            spawn_timer.UpdateTimer();
+            if(spawn_timer.Test())
+            {
+                SpawnMob();
+
+                spawn_timer.ResetToZero();
+            }
+
             base.Update(OFFSET);
         }
 
@@ -50,6 +55,12 @@ namespace MG_TopDownShooter
         {
             is_alive = false;
         }
+
+        public virtual void SpawnMob()
+        {
+            GameGlobals.PassMob(new Grunt(pos));
+        }
     }
 }
+
 

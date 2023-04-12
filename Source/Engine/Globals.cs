@@ -31,6 +31,20 @@ namespace MG_TopDownShooter
             return (float)Math.Sqrt(Math.Pow(pos.X - target.X, 2) + Math.Pow(pos.Y - target.Y, 2));
         }
 
+        public static Vector2 RadialMovement(Vector2 target, Vector2 pos, float speed)
+        {
+            float dist = GetDistance(pos, target);
+
+            if(dist <= speed)
+            {
+                return target - pos;
+            }
+            else
+            {
+                return (target - pos) * speed/dist;
+            }
+        }
+
         public static float RotateTowards(Vector2 position, Vector2 target)
         {
             if(target.X == position.X && target.Y == position.Y)
@@ -49,8 +63,6 @@ namespace MG_TopDownShooter
             {
                 return (float)Math.PI - angle;
             }
-            
         }
-
     }
 }

@@ -18,9 +18,26 @@ using Microsoft.Xna.Framework.Media;
 
 namespace MG_TopDownShooter
 {
-    public class GameGlobals
+    public class Grunt : Mob
     {
-        public static PassObject PassProjectile;
-        public static PassObject PassMob;
+
+        public Grunt(Vector2 POS) 
+            : base("2D\\Units\\Mobs\\mob_grunt", POS, new Vector2(64, 64))
+        {
+            speed = 4.0f;
+        }
+
+        public override void Update(Vector2 OFFSET, Hero HERO)
+        {
+
+            base.Update(OFFSET, HERO);
+        }
+
+        public override void Draw(Vector2 OFFSET)
+        {
+            base.Draw(OFFSET);
+        }
     }
 }
+
+

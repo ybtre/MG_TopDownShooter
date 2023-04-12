@@ -18,37 +18,30 @@ using Microsoft.Xna.Framework.Media;
 
 namespace MG_TopDownShooter
 {
-    public class Unit : Basic2d
+    public class Mob : Unit
     {
-        public bool is_alive;
 
-        public float speed;
-
-        public float hit_dist;
-
-
-        public Unit(string PATH, Vector2 POS, Vector2 DIMS) : base(PATH, POS, DIMS)
+        public Mob(string PATH, Vector2 POS, Vector2 DIMS) : base(PATH, POS, DIMS)
         {
-            is_alive = true;
-
-            speed = 2.0f;
-
-            hit_dist = 35.0f;
+            speed = 4.0f;
         }
 
-        public override void Update(Vector2 OFFSET)
+        public virtual void Update(Vector2 OFFSET, Hero HERO)
         {
+            AI(HERO);
+
             base.Update(OFFSET);
+        }
+
+        public virtual void AI(Hero HERO)
+        {
+            pos += Globals.RadialMovement(HERO.pos, pos, speed);
+            rot = Globals.RotateTowards(pos, HERO.pos);
         }
 
         public override void Draw(Vector2 OFFSET)
         {
             base.Draw(OFFSET);
-        }
-
-        public virtual void GetHit()
-        {
-            is_alive = false;
         }
     }
 }
