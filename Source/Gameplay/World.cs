@@ -20,9 +20,13 @@ namespace MG_TopDownShooter
 {
     public class World
     {
+        public int num_killed;
+
         public Vector2 offset = Vector2.Zero;
 
         public Hero hero;
+
+        public UI ui;
            
         public List<Projectile> projectiles = new List<Projectile>();
         public List<Mob> mobs = new List<Mob>();
@@ -30,6 +34,8 @@ namespace MG_TopDownShooter
 
         public World()
         {
+            num_killed = 0;
+
             hero = new Hero("2D\\Characters\\player_ship", new Vector2(300, 300), new Vector2(64, 64));
 
             GameGlobals.PassProjectile = AddProjectile;
@@ -42,6 +48,8 @@ namespace MG_TopDownShooter
 
             spawn_points.Add(new SpawnPoint("2D\\MISC\\spawn_grunts", new Vector2(Globals.screen_width - 100, Globals.screen_height / 2), new Vector2(32, 32)));
             spawn_points[spawn_points.Count-1].spawn_timer.AddToTimer(1000);
+
+            ui = new UI();
         }
 
         public virtual void Update()
@@ -65,6 +73,7 @@ namespace MG_TopDownShooter
 
                 if(!mobs[i].is_alive)
                 {
+                    num_killed++;
                     mobs.RemoveAt(i);
                     i--;
                 }
@@ -74,7 +83,8 @@ namespace MG_TopDownShooter
             {
                 spawn_points[i].Update(offset);
             }
-
+            
+            ui.Update(this);
         }
 
         public virtual void Draw(Vector2 OFFSET)
@@ -96,6 +106,7 @@ namespace MG_TopDownShooter
                 projectiles[i].Draw(offset);
             }
 
+            ui.Draw(this);
         }
 
         public virtual void AddMob(object INFO)

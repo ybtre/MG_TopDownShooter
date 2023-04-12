@@ -22,8 +22,7 @@ namespace MG_TopDownShooter
         public Missile(Vector2 POS,Unit OWNER, Vector2 TARGET) 
             : base("2D\\Projectiles\\missile_projectile", POS, new Vector2(32, 32), OWNER, TARGET)
         {
-
-
+            speed = 10.0f;
         }
 
         public override void Update(Vector2 OFFSET, List<Unit> UNITS)
