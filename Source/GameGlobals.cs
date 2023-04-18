@@ -20,6 +20,8 @@ namespace MG_TopDownShooter
 {
     public class GameGlobals
     {
+        public static int score = 0;
+
         public static PassObject OnPassProjectile;
         public static PassObject OnPassMob;
 

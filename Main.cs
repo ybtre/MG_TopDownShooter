@@ -12,7 +12,7 @@ namespace MG_TopDownShooter
     {
         private GraphicsDeviceManager _graphics;
 
-        World world;
+        Gameplay gameplay;
 
         Basic2d cursor;
 
@@ -47,7 +47,7 @@ namespace MG_TopDownShooter
 
             cursor = new Basic2d("2D\\MISC\\crosshair038", Vector2.Zero, new Vector2(64, 64));
             
-            world = new World();
+            gameplay = new Gameplay();
         }
 
         protected override void Update(GameTime gameTime)
@@ -61,7 +61,7 @@ namespace MG_TopDownShooter
             Globals.mouse.Update();
 
 
-            world.Update();
+           gameplay.Update(); 
 
 
             Globals.keyboard.UpdateOld();
@@ -78,7 +78,7 @@ namespace MG_TopDownShooter
             Globals.sprite_batch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
             // DRAW hERE
 
-            world.Draw(Vector2.Zero);
+            gameplay.Draw();
             
             cursor.Draw(Globals.mouse.newMousePos);
             Globals.sprite_batch.End();

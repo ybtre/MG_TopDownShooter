@@ -33,17 +33,25 @@ namespace MG_TopDownShooter
 
         public void Update(World WORLD)
         {
-            health_bar.Update(WORLD.hero.health, WORLD.hero.health_max);
+            health_bar.Update(WORLD.user.hero.health, WORLD.user.hero.health_max);
         }
 
         public void Draw(World WORLD)
         {
-            string temp_str = "Num Killed: " + WORLD.num_killed;
+            string temp_str = "Score: " + GameGlobals.score;
             Vector2 str_dims = font.MeasureString(temp_str);
 
             Globals.sprite_batch.DrawString(font, temp_str, new Vector2(Globals.screen_width/2 - str_dims.X/2, Globals.screen_height - 100), Color.Black);
 
             health_bar.Draw(new Vector2(20, Globals.screen_height - 60));
+        
+            if(!WORLD.user.hero.is_alive)
+            {
+                temp_str = "Press ENTER to Restart";
+                str_dims = font.MeasureString(temp_str);
+                
+                Globals.sprite_batch.DrawString(font, temp_str, new Vector2(Globals.screen_width/2 - str_dims.X/2, Globals.screen_height / 2), Color.Black);
+            }
         }
 
     }

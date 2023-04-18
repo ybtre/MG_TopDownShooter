@@ -26,6 +26,8 @@ namespace MG_TopDownShooter
             health = 5;
             health_max = health;
 
+            is_alive = true;
+
             speed = 3.0f;
         }
 

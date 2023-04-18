@@ -18,26 +18,16 @@ using Microsoft.Xna.Framework.Media;
 
 namespace MG_TopDownShooter
 {
-    public class Grunt : Mob
+    public class User : Player 
     {
-
-        public Grunt(Vector2 POS) 
-            : base("2D\\Units\\Mobs\\mob_grunt", POS, new Vector2(64, 64))
+        public User() : base()
         {
-            speed = 4.0f;
+            hero = new Hero("2D\\Characters\\player_ship", new Vector2(Globals.screen_width / 2, Globals.screen_height / 2), new Vector2(64, 64));
         }
 
-        public override void Update(Vector2 OFFSET, Player ENEMY)
+        public override void Update(Player ENEMY, Vector2 OFFSET)
         {
-
-            base.Update(OFFSET, ENEMY);
-        }
-
-        public override void Draw(Vector2 OFFSET)
-        {
-            base.Draw(OFFSET);
+            base.Update(ENEMY, OFFSET);
         }
     }
 }
-
-
